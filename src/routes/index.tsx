@@ -34,7 +34,10 @@ export const Route = createFileRoute("/")({
 function Nav({ darkMode, toggleTheme }: { darkMode: boolean; toggleTheme: () => void }) {
   const links = ["Platform", "Solutions", "Use Cases", "Partners", "Trust", "About"];
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
+    <header
+      className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl"
+      style={{ backgroundColor: "rgba(15, 15, 20, 0.98)" }}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center gap-3">
           <img
@@ -334,7 +337,10 @@ function ExecValue() {
     },
   ];
   return (
-    <section className="border-b border-white/5  py-28 text-white">
+    <section
+      className="border-b border-white/5  py-24 text-white"
+      style={{ backgroundColor: "#0f0f12" }}
+    >
       <div className="mx-auto max-w-4xl px-6">
         {/* Section Label */}
         <div className="text-center">
@@ -372,68 +378,121 @@ function ExecValue() {
 
 function FlagshipUseCase() {
   return (
-    <section id="use-case" className="border-b border-border py-24">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2">
-        <div>
-          <div className="text-xs font-medium tracking-[0.22em] text-cyan">FLAGSHIP USE CASE</div>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight">Board Reporting</h2>
-          <p className="mt-6 text-lg text-muted-foreground">
-            A unified CIO/CFO technology summary your executive committee can read in
-            minutes—covering total spend, savings opportunities, vendor risk, and shadow IT
-            exposure.
-          </p>
-          <ul className="mt-8 space-y-3">
-            {[
-              "Consolidate project management tools (est. $420K annual savings)",
-              "Address Shadow IT usage — 12 unmanaged tools identified across teams",
-              "Renegotiate cloud contract ahead of Q4 renewal",
-            ].map((t) => (
-              <li key={t} className="flex items-start gap-3 text-sm text-muted-foreground">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan" />
-                {t}
-              </li>
-            ))}
-          </ul>
-          <a
-            href="#"
-            className="mt-10 inline-flex items-center gap-2 text-sm text-cyan hover:underline"
-          >
-            More on board reporting <ArrowRight className="h-4 w-4" />
-          </a>
+    <section id="use-case" className="border-b border-border py-16">
+      <div className="mx-auto max-w-5xl px-5">
+        <div className="text-[11px] font-medium tracking-[0.22em] text-cyan">FLAGSHIP USE CASE</div>
+
+        <div className="mt-4 text-center">
+          <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            Board Reporting
+          </div>
         </div>
 
-        <div className="rounded-2xl border border-border bg-card p-8">
-          <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            CIO/CFO Technology Summary
-          </div>
-          <div className="mt-1 text-xl font-semibold">Board Review — Q3 2024</div>
-          <div className="mt-1 text-xs text-muted-foreground">Prepared for Executive Committee</div>
-
-          <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-            Total technology spend of <span className="text-foreground">$14.2M</span> represents
-            4.3% of revenue, in line with industry median. Three optimization opportunities
-            identified totaling <span className="text-foreground">$2.1M</span> in potential savings.
-            Two vendor contracts flagged for renewal risk in Q4.
-          </p>
-
-          <div className="mt-6 grid grid-cols-2 gap-3">
-            {[
-              ["Total IT Spend", "$14.2M", "4.3% of revenue", "cyan"],
-              ["Identified Savings", "$2.1M", "3 initiatives", "emerald"],
-              ["Vendor Risk", "Medium", "2 renewals flagged", "amber"],
-              ["Shadow IT Exposure", "12 apps", "Unmanaged tools identified", "rose"],
-            ].map(([l, v, s, c]) => (
-              <div key={l} className="rounded-lg border border-border bg-background/40 p-3">
-                <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                  {l}
-                </div>
-                <div className="mt-1 text-lg font-semibold">{v}</div>
-                <div className="mt-1 text-[11px]" style={{ color: `var(--${c})` }}>
-                  {s}
-                </div>
+        <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-[#0f0f12] shadow-xl">
+          {/* Top */}
+          <div className="flex items-start justify-between border-b border-white/10 px-5 py-4">
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                CIO/CFO Technology Summary
               </div>
-            ))}
+
+              <h3 className="mt-1 text-md font-semibold text-white">Board Review — Q3 2024</h3>
+            </div>
+
+            <div className="text-right">
+              <div className="text-[11px] text-muted-foreground">Prepared for</div>
+              <div className="mt-1 text-xs font-medium text-white">Executive Committee</div>
+            </div>
           </div>
+
+          {/* Body */}
+          <div className="px-5 py-5">
+            <div>
+              <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan">
+                Executive Summary
+              </div>
+
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Total technology spend of $14.2M represents 4.3% of revenue, in line with industry
+                median. Three optimization opportunities identified totaling $2.1M in potential
+                savings. Two vendor contracts flagged for renewal risk in Q4.
+              </p>
+            </div>
+
+            {/* Cards */}
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  label: "Total IT Spend",
+                  value: "$14.2M",
+                  sub: "4.3% revenue",
+                },
+                {
+                  label: "Savings",
+                  value: "$2.1M",
+                  sub: "3 initiatives",
+                },
+                {
+                  label: "Vendor Risk",
+                  value: "Medium",
+                  sub: "2 renewals",
+                },
+                {
+                  label: "Shadow IT",
+                  value: "12 apps",
+                  sub: "Unmanaged tools",
+                },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-lg border border-white/5 bg-white/[0.02] p-4"
+                >
+                  <div className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                    {item.label}
+                  </div>
+
+                  <div className="mt-2 text-2xl font-semibold text-white">{item.value}</div>
+
+                  <div className="mt-1 text-[11px] text-cyan">{item.sub}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Recommendations */}
+            <div className="mt-6">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                Recommendations
+              </div>
+
+              <div className="mt-3 space-y-2">
+                {[
+                  "Consolidate project management tools (est. $420K annual savings)",
+                  "Address Shadow IT usage — 12 unmanaged tools identified across teams",
+                  "Renegotiate cloud contract ahead of Q4 renewal",
+                ].map((item) => (
+                  <div key={item} className="text-sm text-muted-foreground">
+                    • {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center justify-between border-t border-white/10 px-5 py-4">
+            <div className="text-[11px] text-muted-foreground">
+              Sample output from TekLedger analysis. All figures illustrative.
+            </div>
+          </div>
+        </div>
+        <div className="flex justify-center mt-6">
+          <a
+            href="#"
+            className="inline-flex items-center gap-1 text-sm font-medium text-cyan transition hover:gap-2"
+          >
+            More on board reporting
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </section>
